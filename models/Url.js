@@ -13,6 +13,10 @@ const UrlSchema = mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'users'
 	},
+	clicks: {
+		type: Number,
+		required: true
+	},
 	date: {
 		type: Date,
 		default: Date.now

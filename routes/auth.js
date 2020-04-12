@@ -3,22 +3,32 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const auth = require('../middlewares/auth');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
 
-// @route       POST api/users
-// @desc        Register a user
+// @route       GET api/auth
+// @desc        Get logged in user
+// @access      Private
+router.get('/', auth, async (req, res) => {
+	try {
+		const user = await User.findById(req.user.id).select('-password');
+		res.status(202).json(user);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Server error');
+	}
+});
+
+// @route       POST api/auth
+// @desc        Auth user & get token
 // @access      Public
 router.post(
 	'/',
 	[
-		check('firstName', 'First name is required').not().isEmpty(),
-		check('lastName', 'Last name is required').not().isEmpty(),
 		check('email', 'Include a valid email').isEmail(),
-		check('password', 'Enter a password with 6 or more characters').isLength({
-			min: 6
-		})
+		check('password', 'Password is required').exists()
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -26,26 +36,19 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		const { firstName, lastName, email, password } = req.body;
+		const { email, password } = req.body;
 
 		try {
 			let user = await User.findOne({ email });
 
-			if (user) {
-				return res.status(400).json({ msg: 'User already exists' });
+			if (!user) {
+				return res.status(400).json({ msg: 'Invalid credentials' });
 			}
 
-			user = new User({
-				firstName,
-				lastName,
-				email,
-				password
-			});
-
-			const salt = await bcrypt.genSalt(10);
-			user.password = await bcrypt.hash(password, salt);
-
-			await user.save();
+			const isMatch = await bcrypt.compare(password, user.password);
+			if (!isMatch) {
+				return res.status(401).json({ msg: 'Invalid credentials' });
+			}
 
 			const payload = {
 				user: {
@@ -61,7 +64,7 @@ router.post(
 				},
 				(err, token) => {
 					if (err) throw err;
-					res.status(201).json({ token });
+					res.status(202).json({ token });
 				}
 			);
 		} catch (err) {

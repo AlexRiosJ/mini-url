@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootswatch/dist/minty/bootstrap.min.css';
 import './App.css';
+import Navbar from './components/layouts/Navbar';
+import Home from './components/pages/Home';
 
 const App = () => {
 	return (
-		<div className='jumbotron'>
-			<div className='container'>
-				<h1 className='text-center'>Mini URL</h1>
-			</div>
-		</div>
+		<Router>
+			<Fragment>
+				<Navbar />
+				<div className='container'>
+					<Switch>
+						<Route exact path='/' component={Home} />
+						{/* <Route exact path='/about' component={About} /> */}
+						{/* <PrivateRoute exact path='/register' component={Register} /> */}
+						{/* <PrivateRoute exact path='/login' component={Login} /> */}
+						{/* <Route component={NotFound} /> */}
+					</Switch>
+				</div>
+			</Fragment>
+		</Router>
 	);
 };
 

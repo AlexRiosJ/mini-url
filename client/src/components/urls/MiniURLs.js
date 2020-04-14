@@ -24,13 +24,13 @@ const MiniURLs = () => {
 	]);
 
 	return (
-		<div className='jumbotron'>
-			{urls.length === 0 ? (
-				<p className='center'>No URLs to show...</p>
-			) : (
-				urls.map(url => <MiniURLItem url={url} key={url.id} />)
-			)}
-		</div>
+		urls.length > 0 && (
+			<div className='jumbotron'>
+				{urls.map(url => (
+					<MiniURLItem key={url.id} url={url} />
+				))}
+			</div>
+		)
 	);
 };
 

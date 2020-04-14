@@ -15,7 +15,7 @@ const MiniURLForm = () => {
 				id='longUrl'
 			></input>
 			<button type='submit' className='btn btn-lg btn-secondary'>
-				Shorten your link
+				Shorten
 			</button>
 		</form>
 	);

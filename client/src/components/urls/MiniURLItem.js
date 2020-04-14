@@ -14,7 +14,7 @@ const MiniURLItem = ({ url }) => {
 						{clicks}
 					</span>
 					<a href='#!' className='ml-4'>
-						<i class='fas fa-trash'></i>
+						<i className='fas fa-trash'></i>
 					</a>
 				</div>
 			</li>

@@ -17,7 +17,7 @@ export default (state, action) => {
 				isAuthenticated: true,
 				loading: false,
 				user: action.payload,
-				token: localStorage.getItem('token')
+				token: localStorage.getItem('miniUrlToken')
 			};
 		case LOGIN_SUCCESS:
 		case REGISTER_SUCCESS:

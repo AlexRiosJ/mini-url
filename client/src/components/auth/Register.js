@@ -12,7 +12,7 @@ const Register = () => {
 
 	useEffect(() => {
 		loadUser();
-		if (error === 'User already exists') {
+		if (error === 'User already exists.') {
 			setAlert(error, 'danger');
 			clearErrors();
 		}

@@ -1,24 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import UrlContext from '../../context/url/urlContext';
 
 const MiniURLItem = ({ url }) => {
-	const { longUrl, miniUrl, clicks } = url;
+	const urlContext = useContext(UrlContext);
+	const { deleteUrl } = urlContext;
+
+	const { _id, longUrl, miniUrl, clicks } = url;
 
 	return (
-		<ul className='list-group my-2'>
-			<li className='list-group-item align-items-center'>
-				<button className='btn btn-link disabled'>{longUrl}</button>
-				<div className='float-right'>
-					<span className='btn btn-link mr-2'>{miniUrl}</span>
-					<span className='badge badge-secondary badge-pill badge-lg'>
-						{clicks}
-					</span>
-					<a href='#!' className='ml-4'>
-						<i className='fas fa-trash'></i>
-					</a>
-				</div>
-			</li>
-		</ul>
+		<tr className='table-light'>
+			<td className='col-md-6'>
+				<span value={longUrl}>
+					{longUrl.length > 50 ? longUrl.slice(0, 45) + '...' : longUrl}
+				</span>
+			</td>
+			<td className='col-md-4'>
+				<a
+					href={`${window.location.host.replace(3, 5)}/r/${miniUrl}`}
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					{window.location.host.replace(3, 5) + '/r/' + miniUrl}
+				</a>
+			</td>
+			<td className='col-md-2 text-center'>
+				<span className='badge badge-secondary badge-pill badge-lg'>
+					{clicks}
+				</span>
+			</td>
+			<td className='col-md-2'>
+				<a href='#!' onClick={() => deleteUrl(_id)} className='mx-2'>
+					<i className='fas fa-trash'></i>
+				</a>
+			</td>
+		</tr>
 	);
 };
 

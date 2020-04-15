@@ -12,33 +12,39 @@ export default (state, action) => {
 		case GET_URLS:
 			return {
 				...state,
-				urls: action.payload
+				urls: action.payload,
+				loading: false
 			};
 		case ADD_URL:
 			return {
 				...state,
-				urls: [action.payload, ...state.urls]
+				urls: [action.payload, ...state.urls],
+				loading: false
 			};
 		case DELETE_URL:
 			return {
 				...state,
-				urls: state.urls.filter(url => url.id !== action.payload)
+				urls: state.urls.filter(url => url._id !== action.payload),
+				loading: false
 			};
 		case CLEAR_URLS:
 			return {
 				...state,
 				urls: null,
-				error: null
+				error: null,
+				loading: false
 			};
 		case URL_ERROR:
 			return {
 				...state,
-				error: action.payload
+				error: action.payload,
+				loading: false
 			};
 		case CLEAR_ERRORS:
 			return {
 				...state,
-				error: null
+				error: null,
+				loading: false
 			};
 		default:
 			break;

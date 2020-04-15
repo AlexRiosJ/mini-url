@@ -38,7 +38,7 @@ router.post(
 			let url = await Url.findOne({ longUrl });
 
 			if (url) {
-				return res.status(409).json({ msg: 'URL already exists' });
+				return res.status(409).json({ msg: 'URL already exists.' });
 			}
 
 			const newUrl = new Url({
@@ -62,7 +62,7 @@ router.post(
 router.delete('/:id', auth, async (req, res) => {
 	try {
 		let url = await Url.findById(req.params.id);
-		if (!url) return res.status(404).json({ msg: 'URL not found' });
+		if (!url) return res.status(404).json({ msg: 'URL not found.' });
 
 		// Make sure user owns contact
 		if (url.user.toString() !== req.user.id) {

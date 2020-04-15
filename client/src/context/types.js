@@ -11,5 +11,5 @@ export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const GET_URLS = 'GET_URLS';
 export const ADD_URL = 'ADD_URL';
 export const DELETE_URL = 'DELETE_URL';
-export const CLEAR_CONTACTS = 'CLEAR_CONTACTS';
+export const CLEAR_URLS = 'CLEAR_CONTACTS';
 export const URL_ERROR = 'URL_ERROR';

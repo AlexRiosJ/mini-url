@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import UrlContext from './urlContext';
 import UrlReducer from './urlReducer';
@@ -11,10 +11,11 @@ import {
 	CLEAR_ERRORS
 } from '../types';
 
-const UrlState = () => {
+const UrlState = props => {
 	const initialState = {
 		urls: null,
-		error: null
+		error: null,
+		loading: true
 	};
 
 	const [state, dispatch] = useReducer(UrlReducer, initialState);
@@ -39,15 +40,16 @@ const UrlState = () => {
 			const res = await axios.post('/api/urls', url, config);
 			dispatch({ type: ADD_URL, payload: res.data });
 		} catch (err) {
+			console.log(err.response.data.msg);
 			dispatch({
 				type: URL_ERROR,
-				payload: err.response.data.errors[0].msg
+				payload: err.response.data.msg
 			});
 		}
 	};
 
 	// Delete URL
-	const delereUrl = async id => {
+	const deleteUrl = async id => {
 		try {
 			await axios.delete(`/api/urls/${id}`);
 			dispatch({ type: DELETE_URL, payload: id });
@@ -69,7 +71,7 @@ const UrlState = () => {
 	return (
 		<UrlContext.Provider
 			value={{
-				urls: state.contacts,
+				urls: state.urls,
 				error: state.error,
 				getUrls,
 				addUrl,

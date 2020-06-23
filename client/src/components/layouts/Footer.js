@@ -21,17 +21,17 @@ const Footer = () => {
 	const month = months[date.getMonth()];
 
 	return (
-		<footer className='mt-5 p-3 text-center bg-light'>
-			<div className='container'>
-				<div className='float-left'>
-					<i className='fas fa-copyright' /> {month} {date.getFullYear()}
+		<footer className="mt-5 p-3 text-center bg-light">
+			<div className="container">
+				<div className="float-left">
+					<i className="fas fa-copyright" /> {month} {date.getFullYear()}
 				</div>
 
-				<Link to='/'>
-					Mini <i className='fas fa-compress' /> URL
+				<Link to="/">
+					Mini <i className="fas fa-compress" /> URL
 				</Link>
 
-				<Link className='float-right' to='/about'>
+				<Link className="float-right" to="/about">
 					About
 				</Link>
 			</div>

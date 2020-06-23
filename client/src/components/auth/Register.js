@@ -53,101 +53,101 @@ const Register = () => {
 	};
 
 	return (
-		<div className='form-container'>
+		<div className="form-container">
 			<form onSubmit={onSubmit}>
-				<h2 className='mb-4'>Register</h2>
+				<h2 className="mb-4">Register</h2>
 				<Alerts />
-				<div className='row'>
-					<div className='col'>
-						<div className='form-group'>
-							<label className='form-control-label' htmlFor='firstName'>
+				<div className="row">
+					<div className="col">
+						<div className="form-group">
+							<label className="form-control-label" htmlFor="firstName">
 								First name
 							</label>
 							<input
-								type='text'
-								name='firstName'
-								placeholder='Enter first name'
-								className='form-control'
+								type="text"
+								name="firstName"
+								placeholder="Enter first name"
+								className="form-control"
 								value={firstName}
 								onChange={onChange}
-								id='firstName'
+								id="firstName"
 								required
 							/>
 						</div>
 					</div>
-					<div className='col'>
-						<div className='form-group'>
-							<label className='form-control-label' htmlFor='lastName'>
+					<div className="col">
+						<div className="form-group">
+							<label className="form-control-label" htmlFor="lastName">
 								Last name
 							</label>
 							<input
-								type='text'
-								name='lastName'
-								placeholder='Enter last name'
-								className='form-control'
+								type="text"
+								name="lastName"
+								placeholder="Enter last name"
+								className="form-control"
 								value={lastName}
 								onChange={onChange}
-								id='lastName'
+								id="lastName"
 								required
 							/>
 						</div>
 					</div>
 				</div>
-				<div className='form-group'>
-					<label className='form-control-label' htmlFor='email'>
+				<div className="form-group">
+					<label className="form-control-label" htmlFor="email">
 						Email address
 					</label>
 					<input
-						type='email'
-						name='email'
-						placeholder='Enter email'
-						className='form-control'
+						type="email"
+						name="email"
+						placeholder="Enter email"
+						className="form-control"
 						value={email}
 						onChange={onChange}
-						id='email'
+						id="email"
 						required
 					/>
 				</div>
-				<div className='form-group'>
-					<label className='form-control-label' htmlFor='password'>
+				<div className="form-group">
+					<label className="form-control-label" htmlFor="password">
 						Password
 					</label>
 					<input
-						type='password'
-						name='password'
-						placeholder='Enter password'
-						className='form-control'
+						type="password"
+						name="password"
+						placeholder="Enter password"
+						className="form-control"
 						value={password}
 						onChange={onChange}
-						id='password'
+						id="password"
 						required
-						minLength='6'
+						minLength="6"
 					/>
 				</div>
-				<div className='form-group'>
-					<label className='form-control-label' htmlFor='password2'>
+				<div className="form-group">
+					<label className="form-control-label" htmlFor="password2">
 						Confirm password
 					</label>
 					<input
-						type='password'
-						name='password2'
-						placeholder='Confirm password'
-						className='form-control'
+						type="password"
+						name="password2"
+						placeholder="Confirm password"
+						className="form-control"
 						value={password2}
 						onChange={onChange}
-						id='password2'
+						id="password2"
 						required
-						minLength='6'
+						minLength="6"
 					/>
 				</div>
 				<input
-					type='submit'
-					value='Register'
-					className='btn btn-secondary btn-block my-4'
+					type="submit"
+					value="Register"
+					className="btn btn-secondary btn-block my-4"
 				/>
 			</form>
-			<p className='text-center'>
-				Already have an account? <a href='/login'>Login here</a>.
+			<p className="text-center">
+				Already have an account? <a href="/login">Login here</a>.
 			</p>
 		</div>
 	);

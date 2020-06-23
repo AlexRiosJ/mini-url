@@ -30,21 +30,21 @@ const MiniURLForm = () => {
 
 	return (
 		<Fragment>
-			<form className='form-group form-inline my-4' onSubmit={onSubmit}>
-				<label className='col-form-label sr-only' htmlFor='inputDefault'>
+			<form className="form-group form-inline my-4" onSubmit={onSubmit}>
+				<label className="col-form-label sr-only" htmlFor="inputDefault">
 					Shorten your link
 				</label>
 				<input
 					required
-					type='url'
-					name='longUrl'
-					className='form-control form-control-lg col mr-2'
-					placeholder='Shorten your link'
-					id='longUrl'
+					type="url"
+					name="longUrl"
+					className="form-control form-control-lg col mr-2"
+					placeholder="Shorten your link"
+					id="longUrl"
 					value={url.longUrl}
 					onChange={onChange}
 				></input>
-				<button type='submit' className='btn btn-lg btn-secondary'>
+				<button type="submit" className="btn btn-lg btn-secondary">
 					Shorten
 				</button>
 			</form>

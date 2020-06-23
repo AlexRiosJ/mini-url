@@ -41,49 +41,49 @@ const Login = () => {
 	};
 
 	return (
-		<div className='form-container'>
+		<div className="form-container">
 			<form onSubmit={onSubmit}>
-				<h2 className='mb-4'>Login</h2>
+				<h2 className="mb-4">Login</h2>
 				<Alerts />
-				<div className='form-group has-danger'>
-					<label className='form-control-label' htmlFor='email'>
+				<div className="form-group has-danger">
+					<label className="form-control-label" htmlFor="email">
 						Email address
 					</label>
 					<input
-						type='email'
-						name='email'
-						placeholder='Enter email'
+						type="email"
+						name="email"
+						placeholder="Enter email"
 						className={`form-control ${alerts.length > 0 ? 'is-invalid' : ''}`}
 						value={email}
 						onChange={onChange}
-						id='email'
+						id="email"
 						required
 					/>
 				</div>
-				<div className='form-group has-danger'>
-					<label className='form-control-label' htmlFor='password'>
+				<div className="form-group has-danger">
+					<label className="form-control-label" htmlFor="password">
 						Password
 					</label>
 					<input
-						type='password'
-						name='password'
-						placeholder='Enter password'
+						type="password"
+						name="password"
+						placeholder="Enter password"
 						className={`form-control ${alerts.length > 0 ? 'is-invalid' : ''}`}
 						value={password}
 						onChange={onChange}
-						id='password'
+						id="password"
 						required
-						minLength='6'
+						minLength="6"
 					/>
 				</div>
 				<input
-					type='submit'
-					value='Login'
-					className='btn btn-secondary btn-block my-4'
+					type="submit"
+					value="Login"
+					className="btn btn-secondary btn-block my-4"
 				/>
 			</form>
-			<p className='text-center'>
-				Don't have an account? <a href='/register'>Register here</a>.
+			<p className="text-center">
+				Don't have an account? <a href="/register">Register here</a>.
 			</p>
 		</div>
 	);
